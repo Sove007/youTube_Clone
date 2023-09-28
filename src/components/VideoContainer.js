@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { YouTube_API_KEY } from './utils/constant';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
+import Shimmer from './Shimmer';
 
 const VideoContainer = () => {
   const[videos, setVideos] = useState([]);
@@ -18,7 +19,7 @@ const VideoContainer = () => {
   }
 
   return (videos.length === 0 ? (
-    <h1>Loading</h1>):
+    <Shimmer />):
     <div className='flex flex-wrap content-center justify-center pl-3 w-76 '>
     {videos.map((video)=>(
       <Link to={"/watch?v="+ video.id}><VideoCard key={video.id} info={video}/></Link>
